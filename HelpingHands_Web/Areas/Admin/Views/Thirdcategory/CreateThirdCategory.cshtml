@@ -1,0 +1,119 @@
+﻿@model ThirdCategoryCreateVM
+
+<form asp-action="CreateThirdCategory" enctype="multipart/form-data">
+    <br />
+    <div class="container border p-3">
+        <h4 class="text-primary">Create Third Category</h4>
+        <hr />
+
+        <div class="row">
+
+
+            <div class="col-2">
+                <label asp-for="ThirdCategory.ThirdCategoryName" class="control-label pt-2" style="font-size:20px;">Third Category</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="ThirdCategory.ThirdCategoryName" class="form-control" />
+                <span asp-validation-for="ThirdCategory.ThirdCategoryName" class="text-danger"></span>
+            </div>
+
+       @*     <div class="col-2">
+                <label asp-for="ThirdCategory.ThirdCategoryImage" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="ThirdCategory.ThirdCategoryImage" class="form-control" />
+                <span asp-validation-for="ThirdCategory.ThirdCategoryImage" class="text-danger"></span>
+            </div>*@
+
+            <div class="col-2">
+                <label asp-for="ThirdCategory.ThirdCategoryImage" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            @*<div class="col-10 pb-3">
+            <input asp-for="BrandImage" class="form-control" />
+            <span asp-validation-for="BrandImage" class="text-danger"></span>
+            </div>*@
+            <div class="col-10 pb-3">
+                <input type="file" name="file" class="form-control border-1" />
+
+            </div>
+
+            <div class="col-2">
+                <label asp-for="ThirdCategory.FirstCategoryId" class="control-label pt-2" style="font-size:20px;">First Category Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="ThirdCategory.FirstCategoryId" id="ThirdCategory_FirstCategoryId"  class="form-select" asp-items="@Model.FirstCategoryList">
+                    <option disabled selected>--Select FirstCategory--</option>
+                </select>
+                <span asp-validation-for="ThirdCategory.FirstCategoryId" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="ThirdCategory.SecondCategoryId" class="control-label pt-2" style="font-size:20px;">Second Category Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="ThirdCategory.SecondCategoryId" id="ThirdCategory_SecondCategoryId"  class="form-select" asp-items="@Model.SecondCategoryList">
+                    <option disabled selected>--Select SecondCategory--</option>
+                </select>
+                <span asp-validation-for="ThirdCategory.SecondCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="ThirdCategory.IsActive" class="control-label pt-2" style="font-size:20px;">Is Active</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="checkbox" asp-for="ThirdCategory.IsActive" value="true" checked />
+                <span asp-validation-for="ThirdCategory.IsActive" class="text-danger"></span>
+            </div>
+
+            <div class="row offset-2">
+                <div class="col-5">
+                    <input type="submit" value="Create" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-5">
+                    <a asp-action="IndexThirdCategory" asp-controller="ThirdCategory" class="btn-primary btn form-control ">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://cdn.tiny.cloud/1/your-tinymce-script.js" referrerpolicy="origin"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#ThirdCategory_FirstCategoryId").change(function () {
+   
+                var firstCategoryId = $(this).val();
+                $.ajax({
+                   
+                    url: '@Url.Action("GetSecondCategoryByFirstCategory", "Company")',
+                    //  url: '/City/GetStatesByCountry',
+                    type: 'GET',
+                    data: { firstCategoryId: firstCategoryId },
+                    success: function (data) {
+
+                        $("#ThirdCategory_SecondCategoryId").empty();
+                        $("#ThirdCategory_SecondCategoryId").append('<option disabled selected>--Select SecondCategory--</option>');
+
+                        if (data.length > 0) {
+                            $.each(data, function (i, secondCategory) {
+                                $("#ThirdCategory_SecondCategoryId").append($('<option></option>').val(secondCategory.id).text(secondCategory.secondCategoryName));
+                            });
+                        } else {
+                            $("#ThirdCategory_Id").empty();
+                            $("#ThirdCategory_Id").append('<option disabled selected>--Select thirdCategory--</option>');
+                        }
+
+                    }
+                });
+            });
+
+        });
+    </script>
+}
+
+

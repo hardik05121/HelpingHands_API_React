@@ -1,0 +1,66 @@
+﻿@model ServiceUpdateVM
+
+<form asp-action="UpdateService">
+    <br />
+    <div class="container border p-3">
+        <h4 class="text-primary">Update Service</h4>
+        <hr />
+
+        <div class="row">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input asp-for="Service.Id" hidden />
+            <div class="col-2">
+                <label asp-for="Service.ServiceName" class="control-label pt-2" style="font-size:20px;">Service Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Service.ServiceName" class="form-control" />
+                <span asp-validation-for="Service.ServiceName" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Service.FirstCategoryId" class="control-label pt-2" style="font-size:20px;">FirstCategory Name </label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Service.FirstCategoryId" class="form-select" asp-items="@Model.FirstCategoryList">
+                    <option disabled selected>--Select FirstCategory--</option>
+                </select>
+                <span asp-validation-for="Service.FirstCategoryId" class="text-danger"></span>
+            </div>
+            @*
+            <div class="col-2">
+            <label asp-for="Service.SecondCategoryId" class="control-label pt-2" style="font-size:20px;">SecondCategory Name</label>
+            </div>
+            <div class="col-10 pb-3">
+            <select asp-for="Service.SecondCategoryId" class="form-select" asp-items="@Model.SecondCategoryList">
+            <option disabled selected>--Select FirstCategory--</option>
+            </select>
+            <span asp-validation-for="Service.FirstCategoryId" class="text-danger"></span>
+            </div>
+            *@
+            <div class="col-2">
+                <label asp-for="Service.IsActive" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="checkbox" asp-for="Service.IsActive" value="true" checked />
+                <span asp-validation-for="Service.IsActive" class="text-danger"></span>
+            </div>
+
+
+            <div class="row offset-2">
+                <div class="col-5">
+                    <input type="submit" value="Update" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-5">
+                    <a asp-action="IndexService" asp-controller="Service" class="btn-primary btn form-control ">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

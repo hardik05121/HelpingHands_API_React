@@ -1,0 +1,53 @@
+﻿@model HomeVM
+
+<form asp-action="ReviewXComment" asp-controller="Review" method="post" asp-area="Customer">
+    <div class="modal-body p-3 m-2">
+        <input hidden asp-for="ReviewXComment.ReviewID" />
+        <input hidden asp-for="Company.Id" />
+        <h1>Add Comment  @Model.Review.Title </h1>
+
+        <label for="deep" class="visually-hidden">Comment for @Model.Review.Title</label>
+        <textarea asp-for="ReviewXComment.Comment" style="width: 700px; height: 150px;" id="deep" rows="2"></textarea>
+    </div>
+    <div class="modal-body p-2 m-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-controller="Home" asp-action="BrifDetail" asp-area="Customer" asp-route-companyId="@Model.Company.Id" class="btn btn-primary">Close</a>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

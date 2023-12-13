@@ -1,0 +1,31 @@
+﻿@model HomeVM<div class="row p-4">    @foreach (var Company in Model.CompanyList)
+    {        <div class="col-lg-3 col-sm-6">            <a class="text-decoration-none" asp-action="BrifDetail" asp-controller="Home" asp-area="Customer" asp-route-companyId="@Company.Id">                <div class="row p-2">                    <div class="col-12 p-1">                        <h5 class="fw-bold text-center  text-uppercase">                            @TruncateText(Company.CompanyName, 20)                        </h5>                        <a asp-action="BrifDetail" asp-controller="Home" asp-area="Customer" asp-route-companyId="@Company.Id">                            @if (Company.CompanyLogo != null && Company.CompanyLogo.Count() > 0)
+                            {                                <img src="@Company.CompanyLogo" alt="@Company.CompanyName" height="300px" width="400px" class="card-img-top rounded" />                            }
+                            else
+                            {                                <img src="https://placehold.co/300x400/png" height="300px" width="400px" class="card-img-top rounded" />                            }                        </a>                        <div class="card-body p-1">                            <div class="pl-1 text-start">                                <span class="fw-bold text-uppercase">Address:-</span>                                @Company.Address.Substring(0, Math.Min(20, Company.Address.Length))...                            </div>                            <div class="pl-1 text-start">                                <span class="fw-bold text-uppercase">City:-</span>                                @Company.City.CityName                            </div>                            <div class="pl-1 text-start">                                <span class="fw-bold text-uppercase">State:-</span>                                @Company.State.StateName                            </div>                            <div class="pl-1 text-start">                                <span class="fw-bold text-uppercase">Country:-</span>                                @Company.Country.CountryName                            </div>                        </div>                        <div class="card-body pb-2">                            <div class="pl-1 d-flex justify-content-evenly">                                <button class="btn btn-primary"><i class="bi bi-telephone"></i>@TruncateString(Company.PhoneNumber, 10)</button>                                <button class="btn btn-primary"><i class="bi bi-whatsapp"></i>@TruncateString(Company.PhoneNumber, 10)</button>                            </div>                        </div>                        @*   <div>                    <a asp-action="BrifDetail" asp-controller="Home" asp-area="Customer" asp-route-companyId="@Company.Id" class="btn btn-primary bg-gradient border-0 form-control">                    Details                    </a>                    </div> *@                    </div>                </div>            </a>        </div>    }</div>@*@TruncateText(Company.CompanyName, 3) // this method are worked on the three words.@functions {    public string TruncateText(string text, int numWords)    {        if (string.IsNullOrWhiteSpace(text))        {            return text;        }        string[] words = text.Split(' ');        if (words.Length <= numWords)        {            return text;        }        return string.Join(" ", words.Take(numWords)) + " ...";    }} *@@functions {    public string TruncateText(string text, int numCharacters)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return text;
+        }
+
+        if (text.Length <= numCharacters)
+        {
+            return text;
+        }
+
+        return text.Substring(0, numCharacters) + " ...";
+    }}@functions {    public string TruncateString(string text, int numCharacters)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return text;
+        }
+
+        if (text.Length <= numCharacters)
+        {
+            return text;
+        }
+
+        return text.Substring(0, numCharacters) + " ...";
+    }}

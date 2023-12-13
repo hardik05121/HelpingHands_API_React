@@ -1,0 +1,79 @@
+﻿@model CompanyImageCreateVM
+
+<div>
+    <form asp-action="CreateCompanyImage" enctype="multipart/form-data">
+        <div class="container border p-3">
+
+            <div class="container-fluid d-flex">
+                <div class="col-10">
+                    <h4 class="text-primary"> Image For @Model.Company.CompanyName </h4>
+                </div>
+                <div class="col-2 justify-content-end">
+                    @* <a asp-action="IndexCompanyImage" asp-controller="CompanyImage" class="btn-primary btn form-control ">Back to List</a>*@
+                    <a asp-action="IndexCompany" asp-controller="Company" class="btn-primary btn form-control ">Back to List</a>
+                </div>
+            </div>
+            <hr />
+
+            <input hidden asp-for="CompanyImage.Id" />
+            <input hidden asp-for="Company.Id" />
+
+            <div class="row">
+                <div class="form-floating py-2 col-12">
+                    <input type="file" name="files" class="form-control border-0 shadow" multiple />
+                    <label asp-for="CompanyImage.Image" class="ms-2"></label>
+                </div>
+
+                <div class="col-2">
+                    <label asp-for="CompanyImage.IsActive" class="control-label pt-2" style="font-size:20px;">Is Active</label>
+                </div>
+                <div class="col-10 pb-3">
+                    <input type="checkbox" asp-for="CompanyImage.IsActive" value="true" checked />
+                    <span asp-validation-for="CompanyImage.IsActive" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row offset-2">
+                <div class="col-5">
+                    <input type="submit" value="Create" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-5 ">
+                    <a asp-action="IndexCompany" asp-controller="Company" class="btn-primary btn form-control ">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+    <div class="container">
+        <div class="row">
+            @if (Model.CompanyImagelist != null)
+            {
+                @foreach (var image in Model.CompanyImagelist)
+                {
+                    <div class="col-md-2 col-sm-4 my-2 mt-3">
+                        <div class="text-center">
+                            <img src="@image.Image" width="100%"
+                                 style="border-radius:5px; border:1px solid #bbb9b9" />
+
+                            <div class="d-flex justify-content-evenly">
+                                <a asp-action="SetCompanyImage" class="btn btn-primary" asp-route-imageId="@image.Id" asp-route-companyId="@image.CompanyId">
+                                    Set As Default
+                                </a>
+                                <a asp-action="DeleteCompanyImage" class="btn btn-danger" asp-route-imageId="@image.Id" asp-route-companyId="@image.CompanyId">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

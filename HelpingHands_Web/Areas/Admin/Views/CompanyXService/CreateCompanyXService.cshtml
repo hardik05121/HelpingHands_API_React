@@ -1,0 +1,70 @@
+﻿@model CompanyXServiceVM
+
+<form asp-action="CreateCompanyXService">
+    <br />
+    <div class="container border p-3">
+
+        <div class="container-fluid d-flex">
+            <div class="col-10">
+                <h4 class="text-primary"> Service For @Model.Company.CompanyName </h4>
+            </div>
+            <div class="col-2 justify-content-end">
+                @*<a asp-action="IndexCompanyXService" asp-controller="CompanyXService" class="btn-primary btn form-control ">Back to List</a>*@
+                <a asp-action="IndexCompany" asp-controller="Company" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+        </div>
+        <hr />
+
+        <input hidden asp-for="CompanyXService.Id" />
+        <input hidden asp-for="Company.Id" />
+
+        <div class="row">
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input type="checkbox" id="selectAllCheckbox" class="form-check-input" />
+                    <label class="form-check-label" for="selectAllCheckbox">Select All</label>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                @for (int index = 0; index < @Model.ServiceList.Count(); index++)
+                {
+                    <div class="col-2 m-2">
+                        <input type="checkbox" asp-for="@Model.ServiceList[index].IsActive" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model.ServiceList[index].IsActive">@Model.ServiceList[index].ServiceName</label>
+                        <input type="hidden" asp-for="@Model.ServiceList[index].Id" />
+                        <input type="hidden" asp-for="@Model.ServiceList[index].ServiceName" />
+                        <br />
+                    </div>
+                }
+            </div>
+
+            <div class="container-fluid d-flex justify-content-evenly m-2">
+                <div class="col-5">
+                    <input type="submit" value="Save" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-5 ">
+                    <a asp-action="IndexCompany" asp-controller="Company" class="btn-primary btn form-control ">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <script>
+        // JavaScript function to handle "Select All" checkbox
+        $("#selectAllCheckbox").click(function () {
+            var isChecked = $(this).is(":checked");
+            $("input[type=checkbox]").prop("checked", isChecked);
+        });
+    </script>
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+
+}

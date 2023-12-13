@@ -1,0 +1,7 @@
+﻿using HelpingHands_Utility;using HelpingHands_Web.Models;using HelpingHands_Web.Models.VM;using HelpingHands_Web.Service.IService;namespace HelpingHands_Web.Service{    public class ApplicationUserRoleService : BaseService, IApplicationUserRoleService    {        private readonly IHttpClientFactory _clientFactory;        private string categoryUrl;        public ApplicationUserRoleService(IHttpClientFactory clientFactory, IConfiguration configuration) : base(clientFactory)        {            _clientFactory = clientFactory;            categoryUrl = configuration.GetValue<string>("ServiceUrls:HelpingHandAPI");        }
+
+        public Task<T> GetAllAsync<T>(string token)        {            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.GET,                Url = categoryUrl + "/api/v1/applicationUserRoleAPI/GetApplicationUserRoles",                Token = token            });        }
+        public Task<T> GetAsync<T>(string Id, string token)        {            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.GET,                Url = categoryUrl + "/api/v1/applicationUserRoleAPI/GetApplicationUserRole/" + Id,                Token = token            });        }
+
+
+    }}

@@ -1,0 +1,65 @@
+﻿@model CompanyXAmenityVM
+
+<form asp-action="CreateCompanyXAmenity">
+    <br />
+    <div class="container border p-3">
+
+        <div class="container-fluid d-flex">
+            <div class="col-10">
+                <h4 class="text-primary"> Amenity For @Model.Company.CompanyName </h4>
+            </div>
+        </div>
+        <hr />
+
+        <input hidden asp-for="CompanyXAmenity.Id" />
+        <input hidden asp-for="Company.Id" />
+
+        <div class="row">
+      
+            <div class="container-fluid">
+                <div class="col-12">
+                    <button type="button" class="btn btn-primary" id="selectAll">Select All</button>
+                    <button type="button" class="btn btn-primary" id="deselectAll">Deselect All</button>
+                </div>
+            </div>
+            <div class="container-fluid">
+                @for (int index = 0; index < @Model.Amenitylist.Count(); index++)
+                {
+                    <div class="col-2 m-2">
+                        <input type="checkbox" asp-for="@Model.Amenitylist[index].IsCheked" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model.Amenitylist[index].IsCheked">@Model.Amenitylist[index].AmenityName</label>
+                        <input type="hidden" asp-for="@Model.Amenitylist[index].Id" />
+                        <input type="hidden" asp-for="@Model.Amenitylist[index].AmenityName" />
+                        <br />
+                    </div>
+                }
+            </div>
+
+            <div class="container-fluid d-flex justify-content-evenly m-2">
+                <div class="col-5">
+                    <input type="submit" value="Save" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-5">
+                    <a asp-action="IndexCompany" asp-controller="Company" class="btn-primary btn form-control ">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // JavaScript function to handle "Select All" button click
+        $("#selectAll").click(function () {
+            $("input[type=checkbox]").prop("checked", true);
+        });
+
+        // JavaScript function to handle "Deselect All" button click
+        $("#deselectAll").click(function () {
+            $("input[type=checkbox]").prop("checked", false);
+        });
+    </script>
+}

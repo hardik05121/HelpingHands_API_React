@@ -1,0 +1,212 @@
+﻿@model CompanyDeleteVM
+
+<form asp-action="DeleteCompany">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Delete Company</h1>
+        <hr />
+
+        <div class="row">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="col-2">
+                <label asp-for="Company.CompanyName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Company.CompanyName" class="form-control" />
+                <span asp-validation-for="Company.CompanyName" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.FirstCategoryId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.FirstCategoryId" class="form-select" asp-items="@Model.FirstCategoryList">
+                    <option disabled selected>--Select FirstCategory--</option>
+                </select>
+                <span asp-validation-for="Company.FirstCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.SecondCategoryId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.SecondCategoryId" class="form-select" asp-items="@Model.SecondCategoryList">
+                    <option disabled selected>--Select SecondCategory--</option>
+                </select>
+                <span asp-validation-for="Company.SecondCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.ThirdCategoryId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.ThirdCategoryId" class="form-select" asp-items="@Model.ThirdCategoryList">
+                    <option disabled selected>--Select ThirdCategory--</option>
+                </select>
+                <span asp-validation-for="Company.ThirdCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Address" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <textarea asp-for="Company.Address" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Company.Address" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.CountryId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.CountryId" class="form-select" asp-items="@Model.CountryList">
+                    <option disabled selected>--Select Country--</option>
+                </select>
+                <span asp-validation-for="Company.CountryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.StateId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.StateId" class="form-select" asp-items="@Model.StateList">
+                    <option disabled selected>--Select State--</option>
+                </select>
+                <span asp-validation-for="Company.StateId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.CityId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.CityId" class="form-select" asp-items="@Model.CityList">
+                    <option disabled selected>--Select City--</option>
+                </select>
+                <span asp-validation-for="Company.CityId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Description" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <textarea asp-for="Company.Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Company.Description" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Certificate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Company.Certificate" class="form-control" />
+                <span asp-validation-for="Company.Certificate" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.EstablishDate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="number" asp-for="Company.EstablishDate" class="form-control" />
+                <span asp-validation-for="Company.EstablishDate" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.PhoneNumber" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="number" asp-for="Company.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Company.PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Email" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="email" asp-for="Company.Email" class="form-control" />
+                <span asp-validation-for="Company.Email" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.WhatsApp" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.WhatsApp" class="form-control" />
+                <span asp-validation-for="Company.WhatsApp" class="text-danger"></span>
+            </div>
+
+
+            <div class="col-2">
+                <label asp-for="Company.InstagramId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.InstagramId" class="form-control" />
+                <span asp-validation-for="Company.InstagramId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Facebook" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.Facebook" class="form-control" />
+                <span asp-validation-for="Company.Facebook" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Website" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.Website" class="form-control" />
+                <span asp-validation-for="Company.Website" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Twitter" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.Twitter" class="form-control" />
+                <span asp-validation-for="Company.Twitter" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="col-2">
+                <label asp-for="Company.IsActive" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="checkbox" asp-for="Company.IsActive" value="true" checked />
+                <span asp-validation-for="Company.IsActive" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.IsDelete" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="checkbox" asp-for="Company.IsDelete" value="true" />
+                <span asp-validation-for="Company.IsDelete" class="text-danger"></span>
+            </div>
+
+            @*   <div class="col-2">
+            <label asp-for="Company.ImageUrl" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+            <input asp-for="Company.ImageUrl" class="form-control" />
+            <span asp-validation-for="Company.ImageUrl" class="text-danger"></span>
+            </div> *@
+
+
+            <div class="col-5 offset-2">
+                <a asp-action="IndexCompany" asp-controller="Company" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Delete" class="btn btn-success form-control" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

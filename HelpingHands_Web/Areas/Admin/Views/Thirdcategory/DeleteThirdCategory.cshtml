@@ -1,0 +1,63 @@
+﻿@model ThirdCategoryDeleteVM
+
+<form asp-action="DeleteThirdCategory">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Delete ThirdCategory</h1>
+        <hr />
+
+        <div class="row">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input asp-for="ThirdCategory.Id" hidden />
+
+            <div class="col-2">
+                <label asp-for="ThirdCategory.ThirdCategoryName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="ThirdCategory.ThirdCategoryName" class="form-control" />
+                <span asp-validation-for="ThirdCategory.ThirdCategoryName" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="ThirdCategory.FirstCategoryId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="ThirdCategory.FirstCategoryId" class="form-select" asp-items="@Model.FirstCategoryList">
+                    <option disabled selected>--Select FirstCategory--</option>
+                </select>
+                <span asp-validation-for="ThirdCategory.FirstCategoryId" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="ThirdCategory.SecondCategoryId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="ThirdCategory.SecondCategoryId" class="form-select" asp-items="@Model.SecondCategoryList">
+                    <option disabled selected>--Select FirstCategory--</option>
+                </select>
+                <span asp-validation-for="ThirdCategory.SecondCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="ThirdCategory.IsActive" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="checkbox" asp-for="ThirdCategory.IsActive" value="true" checked />
+                <span asp-validation-for="ThirdCategory.IsActive" class="text-danger"></span>
+            </div>
+
+            <div class="col-5 offset-2">
+                <a asp-action="IndexThirdCategory" asp-controller="ThirdCategory" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Delete" class="btn btn-success form-control" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

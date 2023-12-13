@@ -1,0 +1,14 @@
+﻿
+
+using HelpingHands_Utility;
+using HelpingHands_Web.Models;
+using HelpingHands_Web.Models.DTO;
+using HelpingHands_Web.Service.IService;
+
+namespace HelpingHands_Web.Service{    public class PaymentService : BaseService, IPaymentService    {        private readonly IHttpClientFactory _clientFactory;        private string categoryUrl;        public PaymentService(IHttpClientFactory clientFactory, IConfiguration configuration) : base(clientFactory)        {            _clientFactory = clientFactory;            categoryUrl = configuration.GetValue<string>("ServiceUrls:HelpingHandAPI");        }        public Task<T> CreateAsync<T>(PaymentCreateDTO dto, string token)        {            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.POST,                Data = dto,                Url = categoryUrl + "/api/v1/paymentAPI/CreatePayment",                Token = token            });        }        public Task<T> DeleteAsync<T>(int id, string token)        {            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.DELETE,                Url = categoryUrl + "/api/v1/PaymentAPI/DeletePayment/" + id,                Token = token            });        }        public Task<T> GetAllAsync<T>(string token)        {            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.GET,                Url = categoryUrl + "/api/v1/paymentAPI/GetPayments",                Token = token            });        }
+
+        public Task<T> PaymentByPagination<T>(string term, string orderBy, int currentPage, string token)        {
+            //string apiUrl = $"{carUrl}/api/v1/StateAPI/GetStatesData/{Id}/{search}/{pageSize}/{pageNumber}";
+            string apiUrl = $"{categoryUrl}/api/v1/paymentAPI/PaymentByPagination?term={term}&orderBy={orderBy}&currentPage={currentPage}";            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.GET,                Url = apiUrl,                Token = token            });
+
+        }        public Task<T> GetAsync<T>(int id, string token)        {            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.GET,                Url = categoryUrl + "/api/v1/PaymentAPI/GetPayment/" + id,                Token = token            });        }        public Task<T> UpdateAsync<T>(PaymentUpdateDTO dto, string token)        {            return SendAsync<T>(new APIRequest()            {                ApiType = SD.ApiType.PUT,                Data = dto,                Url = categoryUrl + "/api/v1/PaymentAPI/UpdatePayment/" + dto.Id,                Token = token            });        }    }}

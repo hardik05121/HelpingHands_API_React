@@ -1,0 +1,316 @@
+﻿@model CompanyUpdateVM
+
+<form asp-action="UpdateCompany">
+    <br />
+    <div class="container border p-3">
+        <h4 class="text-primary">Update Company</h4>
+        <hr />
+
+        <div class="row">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input hidden asp-for="Company.Id" />
+
+            <div class="col-2">
+                <label asp-for="Company.CompanyName" class="control-label pt-2" style="font-size:20px;">Company Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Company.CompanyName" class="form-control" />
+                <span asp-validation-for="Company.CompanyName" class="text-danger"></span>
+            </div>
+@*
+            <div class="col-2">
+                <label asp-for="Company.CompanyLogo" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Company.CompanyLogo" class="form-control" />
+                <span asp-validation-for="Company.CompanyLogo" class="text-danger"></span>
+            </div>*@
+
+            <div class="col-2">
+                <label asp-for="Company.FirstCategoryId" class="control-label pt-2" style="font-size:20px;">First Category</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.FirstCategoryId" id="ThirdCategory_FirstCategoryId" class="form-select" asp-items="@Model.FirstCategoryList">
+                    <option disabled selected>--Select FirstCategory--</option>
+                </select>
+                <span asp-validation-for="Company.FirstCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.SecondCategoryId" class="control-label pt-2" style="font-size:20px;">Second Category</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.SecondCategoryId" id="ThirdCategory_SecondCategoryId" class="form-select" asp-items="@Model.SecondCategoryList">
+                    <option disabled selected>--Select SecondCategory--</option>
+                </select>
+                <span asp-validation-for="Company.SecondCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.ThirdCategoryId" class="control-label pt-2" style="font-size:20px;">Third Category</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.ThirdCategoryId" id="ThirdCategory_Id" class="form-select" asp-items="@Model.ThirdCategoryList">
+                    <option disabled selected>--Select ThirdCategory--</option>
+                </select>
+                <span asp-validation-for="Company.ThirdCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Address" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <textarea asp-for="Company.Address" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Company.Address" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.CountryId" class="control-label pt-2" style="font-size:20px;">Country Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.CountryId" id="City_CountryId" class="form-select" asp-items="@Model.CountryList">
+                    <option disabled selected>--Select Country--</option>
+                </select>
+                <span asp-validation-for="Company.CountryId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.StateId" class="control-label pt-2" style="font-size:20px;">State Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.StateId" id="City_StateId" class="form-select" asp-items="@Model.StateList">
+                    <option disabled selected>--Select State--</option>
+                </select>
+                <span asp-validation-for="Company.StateId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.CityId" class="control-label pt-2" style="font-size:20px;">City Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <select asp-for="Company.CityId" id="City_Id" class="form-select" asp-items="@Model.CityList">
+                    <option disabled selected>--Select City--</option>
+                </select>
+                <span asp-validation-for="Company.CityId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Description" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <textarea asp-for="Company.Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Company.Description" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Certificate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Company.Certificate" class="form-control" />
+                <span asp-validation-for="Company.Certificate" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Company.EstablishDate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="date" asp-for="Company.EstablishDate" class="form-control" required />
+                <span asp-validation-for="Company.EstablishDate" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.PhoneNumber" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="number" asp-for="Company.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Company.PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Email" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="email" asp-for="Company.Email" class="form-control" />
+                <span asp-validation-for="Company.Email" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.WhatsApp" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.WhatsApp" class="form-control" />
+                <span asp-validation-for="Company.WhatsApp" class="text-danger"></span>
+            </div>
+
+
+            <div class="col-2">
+                <label asp-for="Company.InstagramId" class="control-label pt-2" style="font-size:20px;">Instagram</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.InstagramId" class="form-control" />
+                <span asp-validation-for="Company.InstagramId" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Facebook" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.Facebook" class="form-control" />
+                <span asp-validation-for="Company.Facebook" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Website" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.Website" class="form-control" />
+                <span asp-validation-for="Company.Website" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Company.Twitter" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="url" asp-for="Company.Twitter" class="form-control" />
+                <span asp-validation-for="Company.Twitter" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="col-2">
+                <label asp-for="Company.IsActive" class="control-label pt-2" style="font-size:20px;">Is Active</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="checkbox" asp-for="Company.IsActive" value="true" checked />
+                <span asp-validation-for="Company.IsActive" class="text-danger"></span>
+            </div>
+            @*   <div class="col-2">
+            <label asp-for="Company.IsDelete" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+            <input type="checkbox" asp-for="Company.IsDelete" value="true" />
+            <span asp-validation-for="Company.IsDelete" class="text-danger"></span>
+            </div>*@
+
+            @*   <div class="col-2">
+            <label asp-for="Company.ImageUrl" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+            <input asp-for="Company.ImageUrl" class="form-control" />
+            <span asp-validation-for="Company.ImageUrl" class="text-danger"></span>
+            </div> *@
+
+
+            <div class="row offset-2">
+            <div class="col-5">
+                <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+                <div class="col-5">
+                <a asp-action="IndexCompany" asp-controller="Company" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+                    </script>
+    <script src="https://cdn.tiny.cloud/1/your-tinymce-script.js" referrerpolicy="origin"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#City_CountryId").change(function () {
+                var countryId = $(this).val();
+                $.ajax({
+                    url: '@Url.Action("GetStatesByCountry", "Company")',
+                    // url: '/City/getCitiesByState',
+                    type: 'GET',
+                    //dataType: 'json'
+                    data: { countryId: countryId },
+                    success: function (data) {
+
+                        $("#City_StateId").empty();
+                        $("#City_StateId").append('<option disabled selected>--Select State--</option>');
+                        // alert(data);
+
+                        if (data.length > 0) {
+                            $.each(data, function (i, state) {
+                                // alert(i);
+                                $("#City_StateId").append($('<option></option>').val(state.id).text(state.stateName));
+                            });
+                        } else {
+                            $("#City_Id").empty();
+                            $("#City_Id").append('<option disabled selected>--Select City--</option>');
+                        }
+                    }
+                });
+            });
+
+            $("#City_StateId").change(function () {
+                var stateId = $(this).val();
+                $.ajax({
+                    url: '@Url.Action("GetCitiesByState", "Company")',
+                    //  url: '/City/GetStatesByCountry',
+                    type: 'GET',
+                    data: { stateId: stateId },
+                    success: function (data) {
+                        $("#City_Id").empty();
+                        $("#City_Id").append('<option disabled selected>--Select City--</option>');
+                        $.each(data, function (i, city) {
+                            $("#City_Id").append($('<option></option>').val(city.id).text(city.cityName));
+                        });
+                    }
+                });
+            });
+
+
+            $("#ThirdCategory_FirstCategoryId").change(function () {
+                var firstCategoryId = $(this).val();
+                $.ajax({
+                    url: '@Url.Action("GetSecondCategoryByFirstCategory", "Company")',
+                    //  url: '/City/GetStatesByCountry',
+                    type: 'GET',
+                    data: { firstCategoryId: firstCategoryId },
+                    success: function (data) {
+                        debugger
+                        $("#ThirdCategory_SecondCategoryId").empty();
+                        $("#ThirdCategory_SecondCategoryId").append('<option disabled selected>--Select SecondCategory--</option>');
+
+                        if (data.length > 0) {
+                            $.each(data, function (i, secondCategory) {
+                                $("#ThirdCategory_SecondCategoryId").append($('<option></option>').val(secondCategory.id).text(secondCategory.secondCategoryName));
+                            });
+                        } else {
+                            $("#ThirdCategory_Id").empty();
+                            $("#ThirdCategory_Id").append('<option disabled selected>--Select thirdCategory--</option>');
+                        }
+
+                    }
+                });
+            });
+
+            $("#ThirdCategory_SecondCategoryId").change(function () {
+                var secondCategoryId = $(this).val();
+                $.ajax({
+                    url: '@Url.Action("GetThirdCategoryBySecondCategory", "Company")',
+                    //  url: '/City/GetStatesByCountry',
+                    type: 'GET',
+                    data: { secondCategoryId: secondCategoryId },
+                    success: function (data) {
+                        $("#ThirdCategory_Id").empty();
+                        $("#ThirdCategory_Id").append('<option disabled selected>--Select thirdCategory--</option>');
+                        $.each(data, function (i, thirdCategory) {
+                            $("#ThirdCategory_Id").append($('<option></option>').val(thirdCategory.id).text(thirdCategory.thirdCategoryName));
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
+

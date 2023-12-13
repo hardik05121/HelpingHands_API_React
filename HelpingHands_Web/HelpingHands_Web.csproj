@@ -1,0 +1,111 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Views\Category\**" />
+    <Compile Remove="Areas\Admin\Views\ContactUs\**" />
+    <Compile Remove="Areas\Admin\Views\HtmlTag\**" />
+    <Compile Remove="Areas\Admin\Views\Order\**" />
+    <Compile Remove="Areas\Admin\Views\Product\**" />
+    <Compile Remove="Areas\Admin\Views\Tag\**" />
+    <Compile Remove="Areas\Admin\Views\User\**" />
+    <Compile Remove="Areas\Customer\NewFolder1\**" />
+    <Compile Remove="Areas\Customer\Views\Cart\**" />
+    <Compile Remove="Areas\Identity\**" />
+    <Content Remove="Areas\Admin\Views\Category\**" />
+    <Content Remove="Areas\Admin\Views\ContactUs\**" />
+    <Content Remove="Areas\Admin\Views\HtmlTag\**" />
+    <Content Remove="Areas\Admin\Views\Order\**" />
+    <Content Remove="Areas\Admin\Views\Product\**" />
+    <Content Remove="Areas\Admin\Views\Tag\**" />
+    <Content Remove="Areas\Admin\Views\User\**" />
+    <Content Remove="Areas\Customer\NewFolder1\**" />
+    <Content Remove="Areas\Customer\Views\Cart\**" />
+    <Content Remove="Areas\Identity\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Category\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\ContactUs\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\HtmlTag\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Order\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Product\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Tag\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\User\**" />
+    <EmbeddedResource Remove="Areas\Customer\NewFolder1\**" />
+    <EmbeddedResource Remove="Areas\Customer\Views\Cart\**" />
+    <EmbeddedResource Remove="Areas\Identity\**" />
+    <None Remove="Areas\Admin\Views\Category\**" />
+    <None Remove="Areas\Admin\Views\ContactUs\**" />
+    <None Remove="Areas\Admin\Views\HtmlTag\**" />
+    <None Remove="Areas\Admin\Views\Order\**" />
+    <None Remove="Areas\Admin\Views\Product\**" />
+    <None Remove="Areas\Admin\Views\Tag\**" />
+    <None Remove="Areas\Admin\Views\User\**" />
+    <None Remove="Areas\Customer\NewFolder1\**" />
+    <None Remove="Areas\Customer\Views\Cart\**" />
+    <None Remove="Areas\Identity\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Areas\Admin\Controllers\AmenityController.cs" />
+    <Content Include="Areas\Admin\Controllers\CityController.cs" />
+    <Content Include="Areas\Admin\Controllers\CompanyController.cs" />
+    <Content Include="Areas\Admin\Controllers\CompanyImageController.cs" />
+    <Content Include="Areas\Admin\Controllers\CompanyXAmenityController.cs" />
+    <Content Include="Areas\Admin\Controllers\CompanyXPaymentController.cs" />
+    <Content Include="Areas\Admin\Controllers\CompanyXServiceController.cs" />
+    <Content Include="Areas\Admin\Controllers\CountryController.cs" />
+    <Content Include="Areas\Admin\Controllers\EnquiryController.cs" />
+    <Content Include="Areas\Admin\Controllers\FirstCategoryController.cs" />
+    <Content Include="Areas\Admin\Controllers\PaymentController.cs" />
+    <Content Include="Areas\Admin\Controllers\SecondCategoryController.cs" />
+    <Content Include="Areas\Admin\Controllers\ServiceController.cs" />
+    <Content Include="Areas\Admin\Controllers\StateController.cs" />
+    <Content Include="Areas\Admin\Controllers\ThirdCategoryController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HelpingHands_Utility\HelpingHands_Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\ApplicationRole\CreateApplicationRole.cshtml" />
+    <None Include="Areas\Admin\Views\ApplicationRole\IndexApplicationRole.cshtml" />
+    <None Include="Areas\Admin\Views\ApplicationRole\UpdateApplicationRole.cshtml" />
+    <None Include="Areas\Admin\Views\ApplicationUser\IndexApplicationUser.cshtml" />
+    <None Include="Areas\Admin\Views\ApplicationUser\MultipleRole.cshtml" />
+    <None Include="Areas\Customer\Views\Auth\AccessDenied.cshtml" />
+    <None Include="Areas\Customer\Views\Auth\Login.cshtml" />
+    <None Include="Areas\Customer\Views\Auth\Register.cshtml" />
+    <None Include="Areas\Customer\Views\Review\CreateReview.cshtml" />
+    <None Include="Areas\Customer\Views\Review\ReviewXComment.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <None Include="Areas\Customer\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Customer\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\js\lazyLoading.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\firstcategory\" />
+    <Folder Include="wwwroot\images\thirdcategory\" />
+    <Folder Include="wwwroot\images\secondcategory\" />
+  </ItemGroup>
+
+</Project>
